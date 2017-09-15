@@ -1,0 +1,12 @@
+body.modal-open .modal[style]:not([style='display: none;']) {
+    display: flex !important;
+    height: 100%;
+} 
+
+body.modal-open .modal[style]:not([style='display: none;']) .modal-dialog {
+    margin: auto;
+}
+.modal .modal-body {
+    max-height: 420px;
+    overflow-y: auto;
+}

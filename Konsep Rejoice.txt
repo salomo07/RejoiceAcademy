@@ -1,0 +1,4 @@
+Rejoice adalah sebuah web yang menghandle segala transaksi dari :
+- Inventory gudang
+- Transaksi (Sisi offline, Sisi Online) : Transaksi dapat dilakukan persis transaksi di minimarket,
+namun juga bisa transaksi online (ada cart).

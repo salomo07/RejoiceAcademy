@@ -4,27 +4,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Home extends CI_Controller {
 	function __construct() {
         parent::__construct();
+        $this->general->getHeaderAside();
     }
 	
 	public function index()
-	{
-        $this->general->getHeaderAside();
-        $data['header']=$this->general->header;
-        $data['asideleft']=$this->general->asideleft;
-		$this->load->view('home',$data);
+	{   
+        // require(APPPATH .'third_party/HTMLParser/simple_html_dom.php');  
+        // $url='https://sg.linkedin.com/company/talentvis';
+        // $ch = curl_init();
+        // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        // curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        // curl_setopt($ch, CURLOPT_REFERER, $url);
+        // curl_setopt($ch, CURLOPT_URL, $url);
+        // $data = curl_exec($ch);
+        // curl_close($ch);
+
+
+        // $html = str_get_html($data);
+        // $dom =new simple_html_dom($html);
+        // $aaa=$dom->find('.discovery-panel');
+        // foreach ($aaa as $key => $value) {
+        //     echo $value."\n";
+        // }
+        // echo count($aaa);
+        $this->load->view('home');
 	}
     
     function tryLogin()
     {
         $this->general->tryLogin();
     }
-	public function signout()
-	{
-		$arrayDataUser=$this->general->dataUser;
-        $this->m_login->updateSignout($arrayDataUser->IdUser);
-        $this->session->sess_destroy();
-        redirect(current_url());             
-	}
+	
     public function getModalChangePassword()
     {
         $data['idUser']= $this->input->post('idUser');
@@ -41,5 +53,9 @@ class Home extends CI_Controller {
             $this->m_login->updatePassword($idUser,base64_encode($newpass));
         }
         else{echo "Password lama salah";}
+    }
+    function signout()
+    {
+        $this->general->signout();
     }
 }

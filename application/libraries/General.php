@@ -8,18 +8,18 @@ class General {
     private $obj = NULL;
     function General(){
         $this->obj= & get_instance();
-        $this->obj->load->model('m_login');
         $this->asideleft='';
         $this->asideright='';
         $this->header='';
         $this->colorStyle='';
         $this->dataUser=$this->obj->session->userdata('dataUser');
+        $this->REQUEST_URI=explode('/',$_SERVER['REQUEST_URI']);
     }
     
     function getHeaderAside()
     {
-        if($this->dataUser)
-        {
+        if(isset($this->dataUser))
+        {            
             $IdRole=$this->dataUser->IdRole;
             $arrayAside= array();
             $daftarmenuaside=$this->obj->m_login->getAksesMenuAside($IdRole);
@@ -28,7 +28,7 @@ class General {
                 $submenus=$this->obj->m_login->getSubMenuAside($value->IdMenu,$IdRole);
                 array_push($arrayAside, (object) array('menu'=>$value,'submenus'=>$submenus));
             }
-            $data['arrayAside']= $arrayAside;
+            $data['arrayAside']= $arrayAside;//print_r($data['arrayAside']);
             $this->asideleft= $this->obj->load->view('template/asideleft',$data,true);
             $this->asideright=$this->obj->load->view('template/asideright',$data,true);
             $this->obj->session->set_userdata('asideleft',$this->asideleft);
@@ -55,22 +55,22 @@ class General {
                 }
             }
             $data['arrayHeader']= $arrayHeader;//print_r($data['arrayHeader']);
-            $data['REQUEST_URI']= explode('/',$_SERVER['REQUEST_URI']);
+
             $this->header= $this->obj->load->view('template/header',$data,true);
             $this->obj->session->set_userdata('header',$daftarmenu);  
         }
         else //if User not Loggedin, load view for public home
         {
-            //echo "string".$this->obj->router->fetch_class();
             if($this->obj->router->fetch_class()=='Registration') //Not login but on Register page
             {
-                $this->header= $this->obj->load->view('template/headerdefault','',true);
+                $this->header= $this->obj->load->view('template/headerdefault',$data,true);
             }
             else
             {
                 $this->header= $this->obj->load->view('template/headerlogin','',true);
             }
-        }             
+        }
+
     }
     function tryLogin()
     {
@@ -103,7 +103,7 @@ class General {
     {
         $this->obj->m_login->updateSignout($this->dataUser->IdUser);
         $this->obj->session->sess_destroy();
-        redirect(current_url());             
+        echo "Sign Out";           
     }
 
 }

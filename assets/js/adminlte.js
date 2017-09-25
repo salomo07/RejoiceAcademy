@@ -215,7 +215,7 @@ throw new Error('AdminLTE requires jQuery')
 
   var Default = {
     collapseScreenSize   : 767,
-    expandOnHover        : false,
+    expandOnHover        : true,
     expandTransitionDelay: 200
   }
 
@@ -292,7 +292,7 @@ throw new Error('AdminLTE requires jQuery')
     var windowWidth = $(window).width()
 
     if (windowWidth > this.options.collapseScreenSize) {
-      //$('body').removeClass(ClassName.collapsed).trigger($.Event(Event.expanded))
+      $('body').removeClass(ClassName.collapsed).trigger($.Event(Event.expanded))
     }
     else {
       $('body').addClass(ClassName.open).trigger($.Event(Event.expanded))
@@ -302,12 +302,12 @@ throw new Error('AdminLTE requires jQuery')
   PushMenu.prototype.close = function () {
     var windowWidth = $(window).width()
     if (windowWidth > this.options.collapseScreenSize) {
-      //$('body').addClass(ClassName.collapsed).trigger($.Event(Event.collapsed))
+      $('body').addClass(ClassName.collapsed).trigger($.Event(Event.collapsed))
     } else {
       $('body').removeClass(ClassName.open + ' ' + ClassName.collapsed).trigger($.Event(Event.collapsed))
     }
   }
-
+  
   PushMenu.prototype.expandOnHover = function () {
     $(Selector.mainSidebar).hover(function () {
       if ($('body').is(Selector.mini + Selector.collapsed)
@@ -330,8 +330,8 @@ throw new Error('AdminLTE requires jQuery')
 
   PushMenu.prototype.collapse = function () {
     setTimeout(function () {
-      //$('body').removeClass(ClassName.expanded);.addClass(ClassName.collapsed)  
-      //$('.main-sidebar').removeClass(ClassName.expanded).css('display','none');//.addClass(ClassName.collapsed)
+      //$('body').removeClass(ClassName.expanded).addClass(ClassName.collapsed); 
+      //$('.main-sidebar').removeClass(ClassName.expanded).css('display','none');
           
     }, this.options.expandTransitionDelay)
   }

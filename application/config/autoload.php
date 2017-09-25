@@ -8,4 +8,4 @@ $autoload['drivers'] = array();
 $autoload['helper'] = array('url','file','form','cookie');
 $autoload['config'] = array();
 $autoload['language'] = array();
-$autoload['model'] = array();
+$autoload['model'] = array('m_login');

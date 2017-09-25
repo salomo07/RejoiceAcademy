@@ -8,9 +8,13 @@ class Master_Menu extends CI_Controller {
         $this->general->getHeaderAside();
     }
     public function index()
-	{		
-		//$data['header']=$this->session->userdata('header');
-        //$data['asideleft']=$this->session->userdata('asideleft');
-		$this->load->view('master/menu');
+	{
+		$this->load->view('menu');
+	}
+	function masterAsideMenu1()
+	{
+		if($_POST['filter'])
+		$dataMenuAsideLevel1=$this->m_master->getMenuHeaderLevel1();
+		echo json_encode(array("data"=>$dataMenuAsideLevel1,"count"=>count($dataMenuAsideLevel1)));
 	}
 }

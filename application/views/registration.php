@@ -7,14 +7,14 @@
   <title><?php echo AppNameL; ?></title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-  <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-  <link rel="stylesheet" href="assets/css/ionicons.min.css">
-  <link rel="stylesheet" href="assets/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="assets/css/skins/_all-skins.css">
-  <link rel="stylesheet" href="assets/fonts/googlefont.css">
-  <link rel="stylesheet" href="assets/plugins/iCheck/square/blue.css">
-  <link rel="stylesheet" href="assets/plugins/bootstrap-validator/bootstrapValidator.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/ionicons.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/skins/_all-skins.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/googlefont.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/iCheck/square/blue.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/bootstrap-validator/bootstrapValidator.min.css">
 </head>
 
 <body class="hold-transition skin-blue fixed sidebar-mini">

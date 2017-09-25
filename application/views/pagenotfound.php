@@ -3,40 +3,41 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PSG IT Inventory</title>
+  <title><?php echo AppNameL; ?></title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <?php $this->load->view('/template/link');?>  
-  <link rel="stylesheet" href="assets/plugins/datatables/dataTables.bootstrap.css">
+  <?php $this->load->view('/template/script');?>
+
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
+<body class="hold-transition skin-blue fixed">
 <div class="wrapper">
-  <?php echo $header?>
-  <?php echo $asideleft?>
+  <?php echo $this->general->header;?>
+  <?php echo $this->general->asideleft;?>
+  
   <div class="content-wrapper">
     <section class="content-header"><br>
       <ol class="breadcrumb">
-        <li><a href="<?php echo base_url(); ?>">PSG IT Inventory</a></li>
-        <li class="active"><?php echo $this->router->fetch_class();?></li>
+        <li><a href="<?php echo base_url(); ?>"><?php echo AppNameS; ?></a></li>
+        <li class="active"><a href="<?php echo base_url().$this->router->fetch_class(); ?>">Page Not Found</a>
+        </li>
       </ol>
     </section>
-
     <section class="content">
-    <center><label>Page not found</label></center>
+    <div class="row">
+      <?php echo $this->router->fetch_class() ?>
+    </div>
     </section>
   </div>
 
   <footer class="main-footer">
-    <center>Copyright &copy; PT. PSG 2016.</center>
+    <div class="pull-right hidden-xs"><b>Version</b> 2.4.0</div>
+    <strong>Copyright &copy; 2017 <a href="<?php echo base_url(); ?>"><?php echo AppNameL; ?></a>
   </footer>
-  <div id="myModal" class="modal fade" tabindex="-1" role="dialog"></div>
-  <?php $this->load->view('/template/asideright');?> 
-<div class="control-sidebar-bg"></div>
+  <?php echo $this->general->asideright;?>
+  <div class="control-sidebar-bg"></div>
 </div>
 </body>
 </html>
-<?php $this->load->view('/template/script');?> 
 
-<script src="<?php echo base_url();?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url();?>assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
- 
+
+<?php $this->load->view('/template/link');?>

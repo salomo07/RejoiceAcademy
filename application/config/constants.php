@@ -31,3 +31,4 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 defined('AppNameL') ? null : define('AppNameL', 'Rejoice Academy');
 defined('AppNameS') ? null : define('AppNameS', 'Rejoice');
 defined('CompanyName') ? null : define('CompanyName', 'Rejoice Corporation');
+defined('AppVer') ? null : define('AppVer', '0.0.1');

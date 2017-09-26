@@ -55,90 +55,60 @@
 <script src="<?php echo base_url();?>assets/plugins/jsgrid/jsgrid.js"></script>
 <script>
   <?php if ($this->general->dataUser): ?>
-    // getAjax("<?php echo base_url().'Master/Master_Menu/masterMenu1'?>", "POST","json",true,{all: 1},function(result){
-    //   var menu=result;
-    //   console.log(result);
-    //   $("#jsGrid").jsGrid({ 
-    //       inserting: true,
-    //       editing: true,
-    //       sorting: true,
-    //       paging: true,
-    //       loadData: function(filter) {
-    //           return $.ajax({
-    //               type: "POST",
-    //               url: "<?php echo base_url(); ?>'Master/Master_Menu/masterMenu1",
-    //               data: filter
-    //           });
-    //       },
-    //       insertItem: "<?php echo base_url(); ?>'Master/Master_Menu/masterMenu1",
-    //       updateItem: "<?php echo base_url(); ?>'Master/Master_Menu/masterMenu1",
-    //       deleteItem: "<?php echo base_url(); ?>'Master/Master_Menu/masterMenu1",
 
-    //       width: "100%",
-    //       height: "auto",
-    //       data: menu,
-   
-    //       fields: [
-    //           { name: "IdMenu", type: "hidden", validate: "required",width:35, visible:false},
-    //           { name: "Label", type: "text", validate: "required" },
-    //           { name: "URL", type: "text" },
-    //           { name: "IconClass", type: "text" },
-    //           { name: "IconStyle", type: "text" },
-    //           { name: "IconSrc", type: "text"},
-    //           { name: "Description", type: "text" },
-    //           { type: "control" }
-    //       ]
-    //   });//.css('width','100%','overflow','scroll');
-    // });
+    $("#jsGrid").jsGrid({
+      width: "100%",
+      height: "auto",
 
-    $("#jsGrid").jsGrid({ 
-        inserting: true,
-        autoload: true,
-        loadData: function(filter) {
-          // var d = $.Deferred();
-          // $.ajax({
-          //   url: "<?php echo base_url() ?>Master/Master_Menu/masterAsideMenu1",
-          //   dataType: "JSON",
-          //   type: "POST",
-          //   data:{"filter":"sss"},
-          // }).done(function(response) 
-          // {
-          //     d.resolve({data: response.data});
-          //     console.log(response);
-          // });
+      filtering: true,
+      inserting: true,
+      editing: true,
+      sorting: true,
 
-          // return d.promise();
-          var d = $.Deferred();
+      autoload:   true,
+      paging:     true,
+      pageSize:   5,
+      pageButtonCount: 5,
+      pageIndex:  1,
 
-          $.ajax({
-            url: "<?php echo base_url() ?>Master/Master_Menu/masterAsideMenu1",
+      controller: {
+        loadData: function(filter) 
+        {
+          return $.ajax({
+            url: "<?php echo base_url() ?>Master/Master_Menu/masterMenu1",
             dataType: "JSON",
-            type: "POST",
-            data:{"filter":""}
-          }).done(function(response) {console.log(response)
-              d.resolve({
-                  data: response.data,
-                  itemsCount: response.count
-             });
+            type:"POST",
+            data:{'filter':filter,'method':'loadData'},
+            success:function(response) {
+              console.log(response);
+            }
           });
-
-          return d.promise();
         },
+        updateItem: function(filter) {
+          $.ajax({
+            url: "<?php echo base_url() ?>Master/Master_Menu/masterMenu1",
+            dataType: "JSON",
+            type:"POST",
+            data:{'filter':filter,'method':'updateItem'},
+            success:function(response) {
+              console.log(response);
+            }
+          });
+        }
+      },
+      width: "100%",
+      height: "auto",
 
-
-        width: "100%",
-        height: "auto",
- 
-        fields: [
-            { name: "IdMenu", type: "hidden", validate: "required",width:35, visible:false},
-            { name: "Label", type: "text", validate: "required" },
-            { name: "URL", type: "text" },
-            { name: "IconClass", type: "text" },
-            { name: "IconStyle", type: "text" },
-            { name: "IconSrc", type: "text"},
-            { name: "Description", type: "text" },
-            { type: "control" }
-        ]
+      fields: [
+          { name: "IdMenu", type: "hidden", validate: "required",width:35},
+          { name: "Label", type: "text", validate: "required" },
+          { name: "URL", type: "text" },
+          { name: "IconClass", type: "text" },
+          { name: "IconStyle", type: "text" },
+          { name: "IconSrc", type: "text"},
+          { name: "Description", type: "text" },
+          { type: "control" }
+      ]
     });
   <?php endif ?>
 </script>

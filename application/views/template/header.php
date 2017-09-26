@@ -150,7 +150,7 @@
   function signout(id) 
   {
     getAjax("<?php echo base_url().'Home/signout'?>", "POST","text",false, {idUser: id},function(result){
-    //if(result=='Sign Out'){location.reload();}
+    if(result=='Sign Out'){location.reload();}
     });
   }
 </script>

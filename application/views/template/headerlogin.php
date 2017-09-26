@@ -95,7 +95,7 @@
           {
             $('#preloader').fadeOut('slow');
             if(response=='User found')
-            {location.reload();}
+            {$('#logModal').modal('hide'); location.reload();}
             else if(response=='Password wrong'){alert('Password wrong');}
             else if(response=='User not found'){alert('User not found');}
             else{alert('sss')}

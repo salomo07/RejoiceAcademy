@@ -11,10 +11,16 @@ class Master_Menu extends CI_Controller {
 	{
 		$this->load->view('menu');
 	}
-	function masterAsideMenu1()
+	function masterMenu1()
 	{
-		if($_POST['filter'])
-		$dataMenuAsideLevel1=$this->m_master->getMenuHeaderLevel1();
-		echo json_encode(array("data"=>$dataMenuAsideLevel1,"count"=>count($dataMenuAsideLevel1)));
+		if($_POST['method']=='loadData')
+		{
+			$dataMenuAsideLevel1=$this->m_master->getMenuLevel1($_POST['filter']);
+			echo json_encode($dataMenuAsideLevel1);
+		}
+		else if($_POST['method']=='updateItem')
+		{
+			$this->m_master->updateMenuLevel1($_POST['filter']);
+		}
 	}
 }
